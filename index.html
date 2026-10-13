@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Андрей Пронин, Product Manager</title>
+<meta name="description" content="Андрей Пронин, Product Manager. 10+ лет в ритейле, из них около 3 лет в IT-продуктах: вывел B2B-продукт из долгостроя в MVP за 3 месяца, запускаю собственные продукты с AI.">
+<meta property="og:title" content="Андрей Пронин, Product Manager">
+<meta property="og:description" content="Довожу продукты до запуска и измеримого результата.">
+<meta property="og:image" content="assets/photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="preload" as="image" href="assets/photo.jpg">
+<style>
+/* Tokens. One accent (deep rose, as in the CV). Radius rule: shells 28px, inner cores 22px, buttons and chips full pill. */
+:root{
+  --bg:#f5f5f6; --surface:#ffffff; --surface-2:#eeeef1; --shell:rgba(24,24,27,.04);
+  --ink:#18181b; --ink-2:#4b4b55; --ink-3:#6e6e78; --line:rgba(24,24,27,.09);
+  --accent:#b1476f; --accent-ink:#ffffff; --accent-soft:#f7e8ee; --accent-line:rgba(177,71,111,.28);
+  --mark:#c8c8cf; --shadow:0 24px 60px -28px rgba(80,30,50,.22);
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f0f11; --surface:#18181b; --surface-2:#202024; --shell:rgba(255,255,255,.04);
+    --ink:#f3f3f5; --ink-2:#b9b9c1; --ink-3:#8e8e97; --line:rgba(255,255,255,.09);
+    --accent:#e27ea4; --accent-ink:#1c0d14; --accent-soft:rgba(226,126,164,.12); --accent-line:rgba(226,126,164,.3);
+    --mark:#4a4a53; --shadow:0 24px 60px -28px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f0f11; --surface:#18181b; --surface-2:#202024; --shell:rgba(255,255,255,.04);
+  --ink:#f3f3f5; --ink-2:#b9b9c1; --ink-3:#8e8e97; --line:rgba(255,255,255,.09);
+  --accent:#e27ea4; --accent-ink:#1c0d14; --accent-soft:rgba(226,126,164,.12); --accent-line:rgba(226,126,164,.3);
+  --mark:#4a4a53; --shadow:0 24px 60px -28px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Onest",system-ui,sans-serif;font-size:17px;line-height:1.55;font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+section{padding:112px 0}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;line-height:1.08}
+h2{font-size:clamp(32px,4.2vw,48px);max-width:22ch;text-wrap:balance}
+h3{font-size:20px;letter-spacing:-.015em;line-height:1.25}
+p{margin:0}
+.lead{color:var(--ink-2);max-width:60ch;margin-top:18px}
+.muted{color:var(--ink-3)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Double-bezel containers */
+.shell{background:var(--shell);border:1px solid var(--line);border-radius:28px;padding:6px}
+.core{background:var(--surface);border-radius:22px;height:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;text-decoration:none;font-weight:500;font-size:16px;border-radius:999px;padding:8px 8px 8px 22px;transition:transform .5s var(--ease),background .4s var(--ease),border-color .4s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn .ico{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;font-size:17px;transition:transform .5s var(--ease)}
+.btn:hover .ico{transform:translate(2px,-1px) scale(1.05)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary .ico{background:rgba(255,255,255,.18)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn-ghost .ico{background:var(--surface-2)}
+.btn-ghost:hover{border-color:var(--accent-line)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:12px}
+
+/* Nav: floating pill */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:6px;padding:6px 6px 6px 18px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);white-space:nowrap;max-width:calc(100% - 32px)}
+.nav .name{font-weight:600;margin-right:10px;text-decoration:none}
+.nav .links a{font-size:15px;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:999px;transition:color .3s var(--ease),background .3s var(--ease)}
+.nav .links a:hover{color:var(--ink);background:var(--surface-2)}
+.nav .btn{padding:6px 6px 6px 16px;font-size:15px}
+.nav .btn .ico{width:28px;height:28px;font-size:15px}
+.theme{width:38px;height:38px;border-radius:999px;border:0;background:transparent;color:var(--ink-2);display:grid;place-items:center;font-size:19px;cursor:pointer}
+.theme:hover{background:var(--surface-2);color:var(--ink)}
+
+/* Hero */
+.hero{padding:112px 0 24px;min-height:min(100dvh,780px);display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:56px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px 6px 10px}
+.status i{width:8px;height:8px;border-radius:50%;background:#2f9e6b;box-shadow:0 0 0 4px rgba(47,158,107,.15)}
+.hero h1{font-size:clamp(36px,3.9vw,54px);margin-top:24px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent)}
+@media (min-width:768px){.nw{white-space:nowrap}}
+.hero .lead{font-size:19px;max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.photo{width:100%;max-width:400px;justify-self:end}
+.photo .core{overflow:hidden}
+.photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 28%;border-radius:22px}
+
+/* Metrics bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.cell .core{padding:28px;display:flex;flex-direction:column;gap:18px}
+.c-mvp{grid-column:span 2;grid-row:span 2}
+.c-mvp .core{background:var(--accent-soft);justify-content:space-between}
+.c-team{grid-column:span 4}
+.c-team .core{background:var(--surface-2);flex-direction:row;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.big{font-size:clamp(44px,5vw,64px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.big small{font-size:.42em;letter-spacing:-.01em;font-weight:500;color:var(--ink-2);margin-left:6px}
+.c-mvp .big{font-size:clamp(64px,8vw,104px)}
+.cap{color:var(--ink-2);font-size:15.5px;line-height:1.45}
+.k{font-size:13px;color:var(--ink-3)}
+
+/* Bars (HTML, no background track) */
+.bars{display:grid;gap:14px}
+.bar-row{display:grid;gap:6px}
+.bar-row .lbl{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)}
+.bar-row .lbl b{color:var(--ink);font-weight:600}
+.bar{height:12px;border-radius:4px;background:var(--mark);transform-origin:left center}
+.bar.acc{background:var(--accent)}
+.cols{display:flex;align-items:flex-end;gap:14px;height:120px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;height:100%}
+.col .v{width:100%;max-width:64px;border-radius:4px 4px 0 0;background:var(--mark);transform-origin:bottom center}
+.col .v.acc{background:var(--accent)}
+.col span{font-size:13px;color:var(--ink-3);text-align:center;line-height:1.2}
+.col b{font-size:15px;color:var(--ink)}
+.dots{display:flex;gap:10px;flex-wrap:wrap}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--mark)}
+.dot.acc{background:var(--accent)}
+.day-scale{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:center;font-size:14px;color:var(--ink-2)}
+.day-scale .row{display:flex;gap:6px}
+.day-scale .row i{width:14px;height:14px;border-radius:4px;background:var(--mark)}
+.day-scale .row i.acc{background:var(--accent)}
+svg text{font-family:inherit}
+.slope .ln{stroke:var(--accent);stroke-width:2;fill:none}
+.slope .pt{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.slope .pt.n{fill:var(--mark)}
+.slope .t{fill:var(--ink);font-size:15px;font-weight:600}
+.slope .s{fill:var(--ink-3);font-size:12px}
+
+/* Timeline */
+.track{display:flex;gap:4px;margin-top:56px;height:16px}
+.seg{border-radius:4px;background:var(--mark);transform-origin:left center}
+.seg.it{background:var(--accent)}
+.seg.own{background:var(--accent);opacity:.55}
+.years{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-3);margin-top:10px}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:3px;background:var(--mark)}
+.legend i.it{background:var(--accent)}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.role{padding:26px 4px 0;border-top:2px solid var(--mark)}
+.role.it{border-top-color:var(--accent)}
+.role .when{font-size:13.5px;color:var(--ink-3)}
+.role h3{margin-top:10px}
+.role .org{color:var(--ink-2);font-size:15px;margin-top:4px}
+.role ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.role li{font-size:15px;color:var(--ink-2);line-height:1.45;padding-left:18px;position:relative}
+.role li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--ink-3);border-radius:2px}
+
+/* Case: sticky split */
+.case{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.case-side{position:sticky;top:110px}
+.case-side .result{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.case-side .result div{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px}
+.case-side .result b{display:block;font-size:28px;letter-spacing:-.03em;font-weight:600}
+.case-side .result span{font-size:13.5px;color:var(--ink-2)}
+.moves{display:grid;gap:12px}
+.move .core{padding:26px 28px;display:grid;grid-template-columns:44px 1fr;gap:18px}
+.move .ic{width:44px;height:44px;border-radius:999px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:22px}
+.move p{color:var(--ink-2);font-size:15.5px;margin-top:6px}
+.move .fact{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--accent)}
+
+/* Projects: featured + list */
+.proj{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:56px}
+.feat .core{padding:34px;display:flex;flex-direction:column;gap:22px;background:linear-gradient(160deg,var(--accent-soft),var(--surface) 70%)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;border-radius:999px;padding:4px 12px;border:1px solid var(--line);color:var(--ink-2);background:var(--surface);width:max-content}
+.chip.live{border-color:var(--accent-line);color:var(--accent)}
+.feat h3{font-size:28px;letter-spacing:-.025em}
+.feat .nums{display:flex;gap:40px;flex-wrap:wrap}
+.feat .nums b{display:block;font-size:44px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.feat .nums span{font-size:14px;color:var(--ink-2)}
+.feat ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:15.5px;display:grid;gap:6px}
+.plist .core{padding:6px 28px}
+.pitem{padding:24px 0;display:grid;gap:8px}
+.pitem + .pitem{border-top:1px solid var(--line)}
+.pitem .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pitem p{color:var(--ink-2);font-size:15.5px}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 56px;margin-top:56px}
+.group h3{font-size:17px;display:flex;align-items:center;gap:10px}
+.group h3 i{color:var(--accent);font-size:20px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font-size:14.5px;padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.tag em{font-style:normal;color:var(--ink-3)}
+
+/* Contact */
+.contact .core{padding:56px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}
+.contact h2{max-width:14ch}
+.clinks{display:grid;gap:4px}
+.clinks a{display:flex;align-items:center;gap:14px;padding:14px 0;text-decoration:none;color:var(--ink-2);border-bottom:1px solid var(--line);transition:color .3s var(--ease)}
+.clinks a:hover{color:var(--ink)}
+.clinks i{font-size:20px;color:var(--accent)}
+footer{padding:40px 0 56px;color:var(--ink-3);font-size:14px}
+
+/* Reveal motion: only when JS is on and motion is allowed */
+@media (prefers-reduced-motion:no-preference){
+  .js .reveal{opacity:0;transform:translateY(28px);filter:blur(6px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+  .js .reveal.in{opacity:1;transform:none;filter:none}
+  .js .grow{transform:scaleX(0);transition:transform 1.2s var(--ease) .15s}
+  .js .grow-y{transform:scaleY(0);transition:transform 1.2s var(--ease) .15s}
+  .js .in .grow,.js .in .grow-y,.js .grow.in{transform:none}
+  .js .hero .reveal:nth-child(2){transition-delay:.08s}
+  .js .hero .reveal:nth-child(3){transition-delay:.16s}
+  .js .hero .reveal:nth-child(4){transition-delay:.24s}
+}
+
+/* Responsive */
+@media (max-width:1023px){
+  .nav .links{display:none}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .c-mvp{grid-column:span 2;grid-row:auto}
+  .c-team{grid-column:span 2}
+  .roles{grid-template-columns:repeat(2,1fr);gap:32px 16px}
+}
+@media (max-width:767px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  section{padding:72px 0}
+  .hero{padding:96px 0 48px;min-height:auto}
+  .hero-grid,.case,.proj,.skills,.contact .core{grid-template-columns:1fr}
+  .hero-grid{gap:40px}
+  .photo{max-width:420px}
+  .bento{grid-template-columns:1fr}
+  .c-mvp,.c-team{grid-column:auto}
+  .roles{grid-template-columns:1fr}
+  .case{gap:32px}
+  .case-side{position:static}
+  .contact .core{padding:32px 24px}
+  .nav{padding-left:14px}
+  .nav .name{margin-right:2px}
+}
+</style>
+</head>
+<body>
+<script>
+  document.documentElement.classList.add('js');
+  try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+
+<nav class="nav" aria-label="Навигация">
+  <a class="name" href="#top">Андрей Пронин</a>
+  <div class="links">
+    <a href="#results">Результаты</a>
+    <a href="#career">Опыт</a>
+    <a href="#case">Кейс</a>
+    <a href="#projects">Проекты</a>
+    <a href="#skills">Навыки</a>
+  </div>
+  <button class="theme" id="themeBtn" type="button" aria-label="Переключить тему"><i class="ph-light ph-circle-half"></i></button>
+  <a class="btn btn-primary" href="https://t.me/viloder" target="_blank" rel="noopener">Написать<span class="ico"><i class="ph-light ph-arrow-up-right"></i></span></a>
+</nav>
+
+<main id="top">
+
+<!-- Hero: asymmetric split -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="status reveal"><i aria-hidden="true"></i>Открыт к предложениям</span>
+      <h1 class="reveal">Довожу продукты до запуска <span class="nw">и <em>измеримого результата</em></span></h1>
+      <p class="lead reveal">Product Manager: 10+ лет в ритейле, из них около 3 лет в IT-продуктах. Ищу роль в user-facing продукте.</p>
+      <div class="ctas reveal">
+        <a class="btn btn-primary" href="https://t.me/viloder" target="_blank" rel="noopener">Написать<span class="ico"><i class="ph-light ph-arrow-up-right"></i></span></a>
+        <a class="btn btn-ghost" href="assets/Andrey_Pronin_CV.pdf" download>Резюме PDF<span class="ico"><i class="ph-light ph-download-simple"></i></span></a>
+      </div>
+    </div>
+    <div class="photo shell reveal">
+      <div class="core"><img src="assets/photo.jpg" width="733" height="1100" alt="Андрей Пронин"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Results: bento infographic -->
+<section id="results">
+  <div class="wrap">
+    <h2 class="reveal">Результаты в цифрах</h2>
+    <p class="lead reveal">Внутренний B2B-продукт Лемана Тех (ex-Леруа Мерлен): 3D-планировщик торгового пространства для мерчандайзинга во всей компании.</p>
+
+    <div class="bento">
+      <div class="cell c-mvp shell reveal">
+        <div class="core">
+          <div>
+            <div class="big">3 <small>месяца</small></div>
+            <p class="cap" style="margin-top:12px;max-width:34ch">от прихода в продукт до MVP. До этого проект больше двух лет не выходил из разработки.</p>
+          </div>
+          <div class="bars" role="img" aria-label="Сравнение сроков: более 24 месяцев без релиза до прихода и 3 месяца до MVP после">
+            <div class="bar-row">
+              <div class="lbl"><span>Долгострой до меня</span><b>24+ мес</b></div>
+              <div class="bar grow" style="width:100%" title="Больше 24 месяцев без выхода из разработки"></div>
+            </div>
+            <div class="bar-row">
+              <div class="lbl"><span>До MVP со мной</span><b>3 мес</b></div>
+              <div class="bar acc grow" style="width:12.5%" title="3 месяца до MVP"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell shell reveal">
+        <div class="core">
+          <div class="k">Переход пользователей</div>
+          <div class="cols" role="img" aria-label="Доля пользователей в новой системе: около 25 процентов в первый месяц, 100 процентов через квартал">
+            <div class="col"><b>~25%</b><div class="v grow-y" style="height:25%" title="Около 25% в первый месяц"></div><span>1-й месяц</span></div>
+            <div class="col"><b>100%</b><div class="v acc grow-y" style="height:100%" title="100% через квартал"></div><span>через квартал</span></div>
+          </div>
+          <p class="cap">50+ пользователей в 115 магазинах</p>
+        </div>
+      </div>
+
+      <div class="cell shell reveal">
+        <div class="core">
+          <div class="k">Создание проекта</div>
+          <div class="big">×2.5</div>
+          <div class="bars">
+            <div class="bar-row"><div class="lbl"><span>Было</span><b>4 нед</b></div><div class="bar grow" style="width:100%" title="4 недели"></div></div>
+            <div class="bar-row"><div class="lbl"><span>Стало</span><b>1.5 нед</b></div><div class="bar acc grow" style="width:37.5%" title="1.5 недели"></div></div>
+          </div>
+          <p class="cap">UI/UX-редизайн и автоматизация рутины</p>
+        </div>
+      </div>
+
+      <div class="cell shell reveal">
+        <div class="core">
+          <div class="k">Удовлетворённость (CSI)</div>
+          <svg class="slope" viewBox="0 0 240 120" role="img" aria-label="Индекс удовлетворённости вырос с 2.8 до 3.5">
+            <line class="ln" x1="34" y1="90" x2="206" y2="34"/>
+            <circle class="pt n" cx="34" cy="90" r="6"><title>CSI до: 2.8</title></circle>
+            <circle class="pt" cx="206" cy="34" r="6"><title>CSI после: 3.5</title></circle>
+            <text class="t" x="34" y="72" text-anchor="middle">2.8</text>
+            <text class="t" x="206" y="18" text-anchor="middle">3.5</text>
+            <text class="s" x="34" y="114" text-anchor="middle">до</text>
+            <text class="s" x="206" y="58" text-anchor="middle">после</text>
+          </svg>
+          <p class="cap"><b style="color:var(--ink)">+25%</b> после регулярного CustDev и тестов на контрольной группе</p>
+        </div>
+      </div>
+
+      <div class="cell shell reveal">
+        <div class="core">
+          <div class="k">Исправление инцидентов</div>
+          <div class="big">24 <small>часа</small></div>
+          <div class="day-scale" role="img" aria-label="Было 5 рабочих дней, стало 24 часа">
+            <span>Было</span><div class="row"><i></i><i></i><i></i><i></i><i></i></div>
+            <span>Стало</span><div class="row"><i class="acc"></i></div>
+          </div>
+          <p class="cap">вместо 5 рабочих дней после пересмотра процесса поддержки</p>
+        </div>
+      </div>
+
+      <div class="cell c-team shell reveal">
+        <div class="core">
+          <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+            <div class="dots" role="img" aria-label="Команда выросла с 2 до 5 человек">
+              <span class="dot" title="Было"></span><span class="dot" title="Было"></span>
+              <span class="dot acc" title="Добавилось"></span><span class="dot acc" title="Добавилось"></span><span class="dot acc" title="Добавилось"></span>
+            </div>
+            <div>
+              <div class="big" style="font-size:40px">2 → 5</div>
+              <p class="cap">человек в команде, Scrum с нуля</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:40px;flex-wrap:wrap">
+            <div><div class="big" style="font-size:40px">~7</div><p class="cap">интеграций со смежными системами</p></div>
+            <div><div class="big" style="font-size:40px">10+</div><p class="cap">CustDev-интервью в квартал</p></div>
+            <div><div class="big" style="font-size:40px">десятки млн ₽</div><p class="cap">бюджет команды и вендоров в год</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Career: proportional timeline + role columns -->
+<section id="career">
+  <div class="wrap">
+    <h2 class="reveal">12 лет: от ритейла к IT-продуктам</h2>
+    <div class="reveal">
+      <div class="track" role="img" aria-label="Шкала карьеры 2014-2026: IKEA 52 месяца, Леруа Мерлен 54 месяца, Лемана Тех 35 месяцев, собственные продукты с мая 2026">
+        <div class="seg grow" style="flex:52" title="IKEA, сентябрь 2014 - декабрь 2018"></div>
+        <div class="seg grow" style="flex:54" title="Леруа Мерлен, январь 2019 - июнь 2023"></div>
+        <div class="seg it grow" style="flex:35" title="Лемана Тех, июль 2023 - май 2026"></div>
+        <div class="seg own grow" style="flex:6" title="Собственные продукты, с мая 2026"></div>
+      </div>
+      <div class="years"><span>2014</span><span>2019</span><span>2023</span><span>2026</span></div>
+      <div class="legend"><span><i></i>Ритейл и производство</span><span><i class="it"></i>IT-продукты</span><span><i class="it" style="opacity:.55"></i>Собственные продукты</span></div>
+    </div>
+
+    <div class="roles">
+      <article class="role reveal">
+        <div class="when">Сентябрь 2014 - декабрь 2018</div>
+        <h3>Инженер по производству</h3>
+        <div class="org">IKEA</div>
+        <ul>
+          <li>5+ международных проектов, эффект $100K+ в год</li>
+          <li>Дефекты -25% (Lean, 5S, FMEA)</li>
+        </ul>
+      </article>
+      <article class="role reveal">
+        <div class="when">Январь 2019 - июнь 2023</div>
+        <h3>Руководитель товарных закупок</h3>
+        <div class="org">Леруа Мерлен, категория «Мебель»</div>
+        <ul>
+          <li>Федеральный проект: 100+ магазинов</li>
+          <li>20+ запусков новых продуктов в год</li>
+          <li>Оборот 7+ млрд ₽ в год, ×2 за 2 года</li>
+        </ul>
+      </article>
+      <article class="role it reveal">
+        <div class="when">Июль 2023 - май 2026</div>
+        <h3>Руководитель продукта (Product Owner)</h3>
+        <div class="org">Лемана Тех (ex-Леруа Мерлен)</div>
+        <ul>
+          <li>MVP за 3 месяца после 2+ лет долгостроя</li>
+          <li>115 магазинов, полный переход за квартал</li>
+          <li>3-летняя продуктовая стратегия</li>
+        </ul>
+      </article>
+      <article class="role it reveal">
+        <div class="when">Май 2026 - сейчас</div>
+        <h3>Собственные продукты</h3>
+        <div class="org">Product Manager, независимые проекты</div>
+        <ul>
+          <li>Telegram-бот для записи: 200 пользователей</li>
+          <li>AI-агент на Hermes, развёрнут на Railway</li>
+          <li>Прототипы с Claude Code</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Case: sticky split -->
+<section id="case">
+  <div class="wrap case">
+    <div class="case-side reveal">
+      <h2>Как я вывел продукт из долгостроя</h2>
+      <p class="lead">3D-планировщик два года не выходил из разработки. Задача: довести его до работающего MVP и перевести на него пользователей всех магазинов.</p>
+      <div class="result">
+        <div><b>3 мес</b><span>до MVP</span></div>
+        <div><b>100%</b><span>пользователей за квартал</span></div>
+        <div><b>×2.5</b><span>быстрее ключевой сценарий</span></div>
+        <div><b>2.8 → 3.5</b><span>CSI</span></div>
+      </div>
+    </div>
+    <div class="moves">
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-scissors"></i></span>
+        <div><h3>Сузил скоуп</h3><p>Разложил путь пользователя через User Story Mapping и оставил в первом релизе только то, без чего сценарий не проходится целиком.</p></div>
+      </div></div>
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-users-three"></i></span>
+        <div><h3>Собрал команду и ритм</h3><p>Вырастил кросс-функциональную команду и внедрил Scrum вместо хаотичного процесса.</p><span class="fact">2 → 5 человек</span></div>
+      </div></div>
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-plugs-connected"></i></span>
+        <div><h3>Связал с системами компании</h3><p>Согласовал интеграции и состав данных со смежными командами: мастер-данные по товарам, медиаконтент, габариты. Принимал финальный результат.</p><span class="fact">~7 интеграций</span></div>
+      </div></div>
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-chats-circle"></i></span>
+        <div><h3>Слушал пользователей</h3><p>Регулярный CustDev в магазинах и проверка новых функций на контрольной группе до полного релиза.</p><span class="fact">10+ интервью в квартал</span></div>
+      </div></div>
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-lightning"></i></span>
+        <div><h3>Ускорил ключевой сценарий</h3><p>Переработал UI/UX создания проекта и автоматизировал рутинные операции.</p><span class="fact">4 → 1.5 недели</span></div>
+      </div></div>
+      <div class="move shell reveal"><div class="core">
+        <span class="ic"><i class="ph-light ph-lifebuoy"></i></span>
+        <div><h3>Наладил поддержку</h3><p>Пересмотрел процесс обработки обращений и договоры поддержки с вендорами.</p><span class="fact">5 дней → 24 часа</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects: featured + list -->
+<section id="projects">
+  <div class="wrap">
+    <h2 class="reveal">Собственные продукты</h2>
+    <p class="lead reveal">С мая 2026 запускаю свои продукты от идеи до работающего решения с помощью Claude Code и AI-агентов.</p>
+    <div class="proj">
+      <div class="feat shell reveal"><div class="core">
+        <span class="chip live"><i class="ph-light ph-check-circle"></i>Работает</span>
+        <h3>Telegram-бот для записи на тренировки</h3>
+        <div class="nums">
+          <div><b>200</b><span>пользователей</span></div>
+          <div><b>30-50</b><span>записей в неделю</span></div>
+        </div>
+        <ul>
+          <li>Запись, личный кабинет, история записей</li>
+          <li>Напоминания и подтверждение за сутки: больше записавшихся доходят до тренировки</li>
+          <li>Тренер видит загрузку и планирует занятия заранее</li>
+        </ul>
+      </div></div>
+      <div class="plist shell reveal"><div class="core">
+        <div class="pitem">
+          <div class="top"><h3>AI-агент на базе Hermes</h3><span class="chip">Песочница</span></div>
+          <p>Задачи по расписанию, алгоритмическая торговля в тестовой среде через API, журнал результатов. Развёрнут на Railway.</p>
+        </div>
+        <div class="pitem">
+          <div class="top"><h3>Виртуальный гардероб</h3><span class="chip">MVP</span></div>
+          <p>Приложение собрано до MVP, на рынок пока не выпущено.</p>
+        </div>
+        <div class="pitem">
+          <div class="top"><h3>Сметы для ремонта</h3><span class="chip">Pre-MVP</span></div>
+          <p>Сервис для бригад и клиентов. Прототип разрабатываю с помощью AI.</p>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills: grouped chips -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="reveal">Чем работаю</h2>
+    <div class="skills">
+      <div class="group reveal">
+        <h3><i class="ph-light ph-compass"></i>Управление продуктом</h3>
+        <div class="tags"><span class="tag">Discovery & Delivery</span><span class="tag">CustDev</span><span class="tag">User Story Mapping</span><span class="tag">Roadmapping</span><span class="tag">MVP</span><span class="tag">A/B-тесты</span><span class="tag">RICE, MoSCoW, WSJF</span><span class="tag">P&L</span></div>
+      </div>
+      <div class="group reveal">
+        <h3><i class="ph-light ph-chart-line-up"></i>Аналитика</h3>
+        <div class="tags"><span class="tag">Продуктовые метрики</span><span class="tag">Юнит-экономика</span><span class="tag">SQL <em>базовый</em></span><span class="tag">Excel</span><span class="tag">Power BI, Grafana <em>отчёты</em></span></div>
+      </div>
+      <div class="group reveal">
+        <h3><i class="ph-light ph-sparkle"></i>AI и прототипирование</h3>
+        <div class="tags"><span class="tag">Claude Code</span><span class="tag">Скиллы, плагины, коннекторы</span><span class="tag">Оркестрация AI-агентов</span><span class="tag">Railway</span><span class="tag">GitHub</span><span class="tag">Python <em>базовый</em></span></div>
+      </div>
+      <div class="group reveal">
+        <h3><i class="ph-light ph-users"></i>Команда и процессы</h3>
+        <div class="tags"><span class="tag">Кросс-функциональные команды до 10 человек</span><span class="tag">Scrum, Kanban</span><span class="tag">Стейкхолдеры и вендоры</span><span class="tag">Jira, Яндекс Трекер</span><span class="tag">Figma, Miro</span><span class="tag">Английский C1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact shell reveal"><div class="core">
+      <div>
+        <h2>Давайте обсудим вашу задачу</h2>
+        <p class="lead">Быстрее всего ответ приходит в Telegram.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="https://t.me/viloder" target="_blank" rel="noopener">Написать<span class="ico"><i class="ph-light ph-arrow-up-right"></i></span></a>
+          <a class="btn btn-ghost" href="assets/Andrey_Pronin_CV.pdf" download>Резюме PDF<span class="ico"><i class="ph-light ph-download-simple"></i></span></a>
+        </div>
+      </div>
+      <div class="clinks">
+        <a href="https://t.me/viloder" target="_blank" rel="noopener"><i class="ph-light ph-telegram-logo"></i>@viloder</a>
+        <a href="mailto:viloder@yandex.ru"><i class="ph-light ph-envelope-simple"></i>viloder@yandex.ru</a>
+        <a href="tel:+79264009941"><i class="ph-light ph-phone"></i>+7 (926) 400-99-41</a>
+        <!-- TODO: добавить ссылку на профиль LinkedIn, когда будет URL -->
+      </div>
+    </div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Андрей Пронин, Москва</div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    btn.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+      var next=cur==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('theme',next)}catch(e){}
+    });
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+    },{threshold:0.01,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
